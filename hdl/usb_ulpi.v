@@ -3,9 +3,9 @@
 // Company:
 // Engineer: Dmitry Matyunin (https://github.com/mcjtag)
 // 
-// Create Date: 10.12.2019 17:04:49
+// Create Date: 20.03.2021 17:04:49
 // Design Name: 
-// Module Name: ulpi_port
+// Module Name: usb_ulpi
 // Project Name: axis_usbd
 // Target Devices:
 // Tool Versions:
@@ -18,7 +18,7 @@
 // Additional Comments:
 // Based on project 'https://github.com/ObKo/USBCore'
 // License: MIT
-//  Copyright (c) 2019 Dmitry Matyunin
+//  Copyright (c) 2021 Dmitry Matyunin
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -39,7 +39,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module ulpi_port #(
+module usb_ulpi #(
 	parameter integer HIGH_SPEED = 1
 )
 (
@@ -91,7 +91,7 @@ localparam [3:0]
 	STATE_SWITCH_FSSTART = 4'hD,
 	STATE_SWITCH_FS = 4'hE;
 
-reg [3:0]state;
+reg [3:0]state = STATE_INIT;
 reg [3:0]state_after;
 
 reg dir_d;

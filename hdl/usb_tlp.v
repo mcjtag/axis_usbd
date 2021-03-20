@@ -3,7 +3,7 @@
 // Company:
 // Engineer: Dmitry Matyunin (https://github.com/mcjtag)
 // 
-// Create Date: 03.12.2019 18:07:34
+// Create Date: 20.03.2021 18:07:34
 // Design Name: 
 // Module Name: usb_tlp
 // Project Name: axis_usbd
@@ -18,7 +18,7 @@
 // Additional Comments:
 // Based on project 'https://github.com/ObKo/USBCore'
 // License: MIT
-//  Copyright (c) 2019 Dmitry Matyunin
+//  Copyright (c) 2021 Dmitry Matyunin
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -215,9 +215,9 @@ assign ctl_xfer_data_in_valid_int = (standart_request == 1'b1) ? ctl_xfer_data_i
 assign ctl_xfer_data_in_last_int = (standart_request == 1'b1) ? ctl_xfer_data_in_last_std : ctl_xfer_data_in_last;
 assign ctl_xfer_data_in_ready = (standart_request == 1'b0) ? ctl_xfer_data_in_ready_int : 1'b0;
 
-ulpi_port #(
+usb_ulpi #(
 	.HIGH_SPEED(HIGH_SPEED)
-) ulpi_port_inst (
+) usb_ulpi_inst (
 	.rst(1'b0),
 	.ulpi_data_in(ulpi_data_in),
 	.ulpi_data_out(ulpi_data_out),

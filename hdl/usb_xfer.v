@@ -3,7 +3,7 @@
 // Company:
 // Engineer: Dmitry Matyunin (https://github.com/mcjtag)
 // 
-// Create Date: 07.06.2019 15:44:58
+// Create Date: 20.03.2021 15:44:58
 // Design Name: 
 // Module Name: usb_xfer
 // Project Name: axis_usbd
@@ -18,7 +18,7 @@
 // Additional Comments:
 // Based on project 'https://github.com/ObKo/USBCore'
 // License: MIT
-//  Copyright (c) 2019 Dmitry Matyunin
+//  Copyright (c) 2021 Dmitry Matyunin
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
