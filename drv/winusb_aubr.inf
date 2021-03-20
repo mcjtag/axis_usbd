@@ -1,0 +1,91 @@
+[Strings]
+
+DeviceName = "AXIS USB Bridge"
+VendorID = "VID_FACE"
+ProductID = "PID_0BDE"
+DeviceGUID = "{3e15b43b-13ff-43a6-b736-1aa62c6554fa}"
+DeviceClassGUID = "{78a1c341-4539-11d3-b88d-00c04fad5171}"
+Date = "12/13/2019"
+
+ProviderName = "mcjtag"
+WinUSB_SvcDesc = "WinUSB Driver Service"
+DiskName = "WinUSB Device Install Disk"
+ClassName = "USB Bridge"
+
+[Version]
+DriverVer = %Date%
+Signature = "$Windows NT$"
+Class = %ClassName%
+ClassGuid = %DeviceClassGUID%
+Provider = %ProviderName%
+CatalogFile = libusb_device.cat
+
+[ClassInstall32]
+Addreg = WinUSBDeviceClassReg
+
+[WinUSBDeviceClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-20
+
+[Manufacturer]
+%ProviderName% = libusbDevice_WinUSB,NTx86,NTamd64
+
+[libusbDevice_WinUSB.NTx86]
+%DeviceName% = USB_Install, USB\%VendorID%&%ProductID%
+
+[libusbDevice_WinUSB.NTamd64]
+%DeviceName% = USB_Install, USB\%VendorID%&%ProductID%
+
+[USB_Install]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[USB_Install.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[WinUSB_ServiceInstall]
+DisplayName     = %WinUSB_SvcDesc%
+ServiceType     = 1
+StartType       = 3
+ErrorControl    = 1
+ServiceBinary   = %12%\WinUSB.sys
+
+[USB_Install.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[WinUSB_Install]
+KmdfLibraryVersion=1.9
+
+[USB_Install.HW]
+AddReg=Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,%DeviceGUID%
+
+[USB_Install.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01009.dll,WdfCoInstaller","WinUSBCoInstaller2.dll"
+
+[CoInstallers_CopyFiles]
+WinUSBCoInstaller2.dll
+WdfCoInstaller01009.dll
+
+[DestinationDirs]
+CoInstallers_CopyFiles=11
+
+[SourceDisksNames]
+1 = %DiskName%,,,\x86
+2 = %DiskName%,,,\amd64
+
+[SourceDisksFiles.x86]
+WinUSBCoInstaller2.dll=1
+WdfCoInstaller01009.dll=1
+
+[SourceDisksFiles.amd64]
+WinUSBCoInstaller2.dll=2
+WdfCoInstaller01009.dll=2
+
