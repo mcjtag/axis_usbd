@@ -191,7 +191,7 @@ usb_tlp #(
 	.VENDOR_ID(16'hFACE),
 	.PRODUCT_ID(16'h0BDE),
 	.MANUFACTURER_LEN(7),
-	.MANUFACTURER("mcjtag"),
+	.MANUFACTURER("mc.jtag"),
 	.PRODUCT_LEN(15),
 	.PRODUCT("AXIS USB Bridge"),
 	.SERIAL_LEN(8),
