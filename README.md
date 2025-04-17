@@ -28,7 +28,7 @@ This project based on [USBCore](https://github.com/ObKo/USBCore) project by ObKo
 * ulpi_data_t   - ULPI data direction (io buffer control)
 * ulpi_dir      - ULPI Direction
 * ulpi_nxt      - ULPI Next
-* ulpi_stp      - ULPI Step
+* ulpi_stp      - ULPI Stop
 * ulpi_reset    - ULPI Reset
 * ulpi_clk      - ULPI CLK (clock from USB PHY)
 * aclk          - Fabric Clock (AXIS clock)
