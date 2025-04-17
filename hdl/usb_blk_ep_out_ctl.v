@@ -79,7 +79,7 @@ usb_blk_fifo #(
 	.FIFO_PACKET(0),
 	.FIFO_DEPTH(1024),
 	.DATA_WIDTH(8),
-	.PROG_FULL_THRESHOLD(960)
+	.PROG_FULL_THRESHOLD(512)
 ) usb_blk_out_fifo (
 	.m_aclk(axis_clk),
 	.s_aclk(usb_clk),
