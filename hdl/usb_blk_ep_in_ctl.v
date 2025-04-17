@@ -98,7 +98,7 @@ always @(posedge usb_clk) begin
 	end else begin
 		case (state)
 		STATE_IDLE: begin
-			if ((was_last_usb == 1'b1) || (prog_full_usb == 1'b1)) begin
+			if ((was_last_usb == 1'b1) || ((prog_full_usb == 1'b1) && (m_axis_tvalid == 1'b1))) begin
 				blk_xfer_in_has_data_out <= 1'b1;
 			end
 			if (blk_in_xfer == 1'b1) begin
@@ -134,7 +134,7 @@ usb_blk_fifo #(
 	.FIFO_PACKET(0),
 	.FIFO_DEPTH(1024),
 	.DATA_WIDTH(8),
-	.PROG_FULL_THRESHOLD(64)
+	.PROG_FULL_THRESHOLD(512)
 ) usb_blk_in_fifo (
 	.m_aclk(usb_clk),
 	.s_aclk(axis_clk),
